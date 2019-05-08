@@ -1,4 +1,4 @@
-package com.demo.base.io.netty;
+package com.demo.base.netty.example02;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -9,17 +9,16 @@ import java.util.logging.Logger;
 
 /**
  * Created by Krystal on 2019/5/7.
+ *
  */
 public class TimeClientHandler extends ChannelHandlerAdapter {
     private static final Logger logger = Logger.getLogger(TimeClientHandler.class.getName());
-    private final ByteBuf firstMessage;
     private int counter;
     private byte[] req;
 
     public TimeClientHandler(){
-        req = "QUERY TIME ORDER".getBytes();
-        firstMessage = Unpooled.buffer(req.length);
-        firstMessage.writeBytes(req);
+        req = ("QUERY TIME ORDER"+System.getProperty("line.separator")).getBytes();
+
     }
 
     @Override
@@ -35,10 +34,8 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx,Object msg) throws Exception{
-        ByteBuf buf = (ByteBuf)msg;
-        byte[] req = new byte[buf.readableBytes()];
-        buf.readBytes(req);
-        String body = new String(req,"UTF-8");
+
+        String body = (String)msg;
         System.out.println("Now is :" + body+"; the counter is:" + ++counter);
     }
 
