@@ -1,4 +1,4 @@
-package com.demo.base.io.netty.codec.serialization;
+package com.demo.base.netty.codec.serialization;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;

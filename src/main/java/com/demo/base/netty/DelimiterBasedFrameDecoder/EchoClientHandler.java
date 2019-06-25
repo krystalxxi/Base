@@ -1,4 +1,4 @@
-package com.demo.base.netty.example03;
+package com.demo.base.netty.DelimiterBasedFrameDecoder;
 
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;

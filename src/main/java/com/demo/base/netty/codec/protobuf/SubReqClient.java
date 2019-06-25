@@ -1,4 +1,4 @@
-package com.demo.base.io.netty.codec.protobuf;
+package com.demo.base.netty.codec.protobuf;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;

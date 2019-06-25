@@ -1,4 +1,4 @@
-package com.demo.base.netty.example03;
+package com.demo.base.netty.DelimiterBasedFrameDecoder;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;

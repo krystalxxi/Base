@@ -1,4 +1,4 @@
-package com.demo.base.netty.example02;
+package com.demo.base.netty.LineBasedFrameDecoder;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

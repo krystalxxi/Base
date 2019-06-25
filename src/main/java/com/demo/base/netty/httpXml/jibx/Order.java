@@ -1,10 +1,11 @@
-package com.demo.base.netty.http_xml.jibx;
+package com.demo.base.netty.httpXml.jibx;
 
 /**
  * Created by Krystal on 2019/5/9.
  */
 public class Order {
     private long orderNumber;
+    private String JiBX_bindingList;
 
 
     /**
@@ -12,7 +13,6 @@ public class Order {
      * used as the shipping address.
      */
 
-    private Float total;
 
     public long getOrderNumber() {
         return orderNumber;
@@ -22,15 +22,11 @@ public class Order {
         this.orderNumber = orderId;
     }
 
-
-
-    public Float getTotal() {
-        return total;
+    public String getJiBX_bindingList() {
+        return JiBX_bindingList;
     }
 
-    public void setTotal(Float total) {
-        this.total = total;
+    public void setJiBX_bindingList(String jiBX_bindingList) {
+        JiBX_bindingList = jiBX_bindingList;
     }
-
-
 }

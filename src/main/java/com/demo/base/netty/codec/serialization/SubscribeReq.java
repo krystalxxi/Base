@@ -1,6 +1,4 @@
-package com.demo.base.io.netty.codec.serialization;
-
-import com.sun.xml.internal.ws.developer.Serialization;
+package com.demo.base.netty.codec.serialization;
 
 import java.io.Serializable;
 

@@ -1,6 +1,6 @@
 syntax = "proto3";
 option java_package = "com.demo.base.io.netty.codec.protobuf";
-option java_outer_classname = "SubscribeReqProto"
+option java_outer_classname = "SubscribeReqProto";
 message SubscribeReq{
     int32 subReqID = 1;
     string userName = 2;

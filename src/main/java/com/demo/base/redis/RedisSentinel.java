@@ -1,17 +1,26 @@
 package com.demo.base.redis;
 
-import redis.clients.jedis.*;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.JedisSentinelPool;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Krystal on 2019/5/10.
  * redis 主从复制模式连接
  */
-public class Redis {
-    private Jedis jedis;
-    public Redis(){
-        jedis = new Jedis("127.0.0.1",7001);
+public class RedisSentinel {
+    String masterName = "mymaster";
+    Set<String> sentinelSet = new HashSet<String>();
+    Jedis jedis = null;
+    public RedisSentinel(){
+        // sentinelSet.add("127.0.0.1:27001");
+        sentinelSet.add("127.0.0.1:27002");
+        JedisSentinelPool sentinelPool = new JedisSentinelPool(masterName,sentinelSet);
+        jedis = sentinelPool.getResource();
     }
     /**
      * 获取redis中指定key的值，value类型为String使用此方法
@@ -49,9 +58,9 @@ public class Redis {
     }
 
     public  static void main(String[] args){
-        Redis redis = new Redis();
-        redis.set("test_1001","1001");
-        String value = redis.get("test_1001");
+        RedisSentinel redis = new RedisSentinel();
+        redis.set("test_1005","1005");
+        String value = redis.get("test_1005");
         System.out.println(value);
     }
 }

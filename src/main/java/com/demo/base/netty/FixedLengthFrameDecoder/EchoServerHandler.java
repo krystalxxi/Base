@@ -1,4 +1,4 @@
-package com.demo.base.netty.example04;
+package com.demo.base.netty.FixedLengthFrameDecoder;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;

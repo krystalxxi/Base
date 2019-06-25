@@ -1,4 +1,4 @@
-package com.demo.base.io.netty.codec.protobuf;
+package com.demo.base.netty.codec.protobuf;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;

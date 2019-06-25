@@ -1,4 +1,4 @@
-package com.demo.base.netty.LineBasedFrameDecoder;
+package com.demo.base.netty.codec.serialization;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -8,14 +8,16 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.LineBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 
 /**
  * Created by Krystal on 2019/5/7.
- * 考虑粘包情况
+ * Netty - Java序列化
+ * ObjectDecoder ObjectEncoder
  */
-public class TimeClient {
+public class SubReqClient {
     public static void main(String[] args) throws Exception {
         int port = 8080;
         if (args != null && args.length > 0) {
@@ -25,7 +27,7 @@ public class TimeClient {
 
             }
         }
-        new TimeClient().connect(port, "127.0.0.1");
+        new SubReqClient().connect(port, "127.0.0.1");
     }
 
     public void connect(int port, String host) throws Exception {
@@ -37,10 +39,9 @@ public class TimeClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            // 处理粘包
-                            ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
-                            ch.pipeline().addLast(new StringDecoder());
-                            ch.pipeline().addLast(new TimeClientHandler());
+                            ch.pipeline().addLast(new ObjectDecoder(1024, ClassResolvers.cacheDisabled(this.getClass().getClassLoader())));
+                            ch.pipeline().addLast(new ObjectEncoder());
+                            ch.pipeline().addLast(new SubReqClientHandler());
                         }
                     });
             ChannelFuture f = b.connect(host, port).sync();

@@ -1,6 +1,6 @@
-package com.demo.base.netty.http_xml;
+package com.demo.base.netty.httpXml;
 
-import com.demo.base.netty.http_xml.jibx.Order;
+import com.demo.base.netty.httpXml.jibx.Order;
 import org.jibx.runtime.*;
 
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class TestOrder {
     public static void main(String[] args) throws JiBXException, IOException {
         TestOrder test = new TestOrder();
         Order order = new Order();
-        order.setOrderNumber(1);
+        order.setJiBX_bindingList("orderNumber");
         String body = test.encode2Xml(order);
         Order order2 = test.decode2Order(body);
         System.out.println(order2);
